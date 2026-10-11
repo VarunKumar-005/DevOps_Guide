@@ -5,9 +5,9 @@
 Amazon EC2 is an AWS service that provides resizable virtual servers called **instances** in the cloud.  
 It allows users to run operating systems, applications, websites, APIs, and workloads without purchasing physical servers.
 
-![Amazon EC2 Architecture](https://docs.aws.amazon.com/images/AWSEC2/latest/UserGuide/images/EC2-instance.png)
+![Each EC2 instance type provides a balance of compute, memory, network, and storage resources.](https://docs.aws.amazon.com/images/AWSEC2/latest/UserGuide/images/instance-types.png)
 
-**Official documentation:** [What is Amazon EC2?](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/)
+*Figure: Instance types balance compute, memory, network, and storage. Source: [What is Amazon EC2?](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)*
 
 ---
 
@@ -75,8 +75,6 @@ Reference: [AWS Shared Responsibility Model](https://aws.amazon.com/compliance/s
 3. Select an appropriate AWS Region.
 4. Choose **Instances → Launch instances**.
 
-![AWS EC2 Console](https://docs.aws.amazon.com/images/AWSEC2/latest/UserGuide/images/EC2-instance.png)
-
 [Official Guide: Get Started with EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
 
 ## Step 2: Configure the Instance
@@ -88,8 +86,6 @@ Reference: [AWS Shared Responsibility Model](https://aws.amazon.com/compliance/s
 5. Select the VPC and subnet.
 6. Configure the security group.
 7. Configure the root EBS volume and any additional storage.
-
-![EC2 Instance Components](https://docs.aws.amazon.com/images/AWSEC2/latest/UserGuide/images/instance-explained.png)
 
 [Official Guide: Launch an EC2 Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/LaunchingAndUsingInstances.html)
 
@@ -109,8 +105,6 @@ Typical rules:
 - Allow SSH or RDP only from trusted sources.
 - Allow HTTP and HTTPS when the application needs public web access.
 - Do not expose administrative ports to everyone unless there is a specific, justified need.
-
-![AWS Security Group Rules](https://docs.aws.amazon.com/images/AWSEC2/latest/UserGuide/images/security-group.png)
 
 [Official Guide: Security Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-security-group.html)
 
@@ -167,14 +161,16 @@ ip addr
 
 ## Step 7: Stop or Terminate the Instance
 
+![The EC2 instance lifecycle.](https://docs.aws.amazon.com/images/AWSEC2/latest/UserGuide/images/instance_lifecycle.png)
+
+*Figure: EC2 instance state transitions. Source: [EC2 Instance Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html)*
+
 - **Stop:** Shuts down the instance while normally preserving EBS volumes. Storage charges may continue.
 - **Start:** Starts a stopped instance again. Its public IPv4 address may change unless a persistent address is configured.
 - **Reboot:** Restarts the operating system.
 - **Terminate:** Permanently deletes the instance. EBS volume deletion depends on the volume's termination settings.
 
 **Important:** Review attached volumes and their deletion settings before terminating an instance.
-
-[Official Guide: EC2 Instance Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html)
 
 ---
 
@@ -193,6 +189,10 @@ ip addr
 | IAM Role | Grants AWS permissions to applications running on an instance |
 | CloudWatch | Collects metrics and supports monitoring and alarms |
 | Auto Scaling | Adjusts EC2 capacity based on configured policies |
+
+![An Auto Scaling group within a VPC.](https://docs.aws.amazon.com/images/autoscaling/ec2/userguide/images/asg-basic-arch.png)
+
+*Figure: Auto Scaling group with a minimum of 4, desired capacity of 6, and maximum of 12 instances. Source: [What is Amazon EC2 Auto Scaling?](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)*
 
 ---
 
@@ -239,7 +239,6 @@ ip addr
 **17. Can two EC2 instances share the same EBS volume?**
 
 **18. What happens when an EC2 instance's workload increases?**
-
 
 ---
 
